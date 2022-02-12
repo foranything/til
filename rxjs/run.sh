@@ -1,0 +1,1 @@
+ts-node ./Subject.ts
