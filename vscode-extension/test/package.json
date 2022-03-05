@@ -1,51 +1,128 @@
 {
   "name": "word-counter",
-	"displayName": "word-counter",
-	"description": "",
-	"version": "0.0.1",
-	"engines": {
-		"vscode": "^1.64.0"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-        "onLanguage:markdown"
-	],
-	"main": "./dist/extension.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "test.helloWorld",
-				"title": "Hello World"
-			}
-		]
-	},
-	"scripts": {
-		"vscode:prepublish": "yarn run package",
-		"compile": "webpack",
-		"watch": "webpack --watch",
-		"package": "webpack --mode production --devtool hidden-source-map",
-		"compile-tests": "tsc -p . --outDir out",
-		"watch-tests": "tsc -p . -w --outDir out",
-		"pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
-		"lint": "eslint src --ext ts",
-		"test": "node ./out/test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/vscode": "^1.64.0",
-		"@types/glob": "^7.2.0",
-		"@types/mocha": "^9.1.0",
-		"@types/node": "14.x",
-		"@typescript-eslint/eslint-plugin": "^5.12.1",
-		"@typescript-eslint/parser": "^5.12.1",
-		"eslint": "^8.9.0",
-		"glob": "^7.2.0",
-		"mocha": "^9.2.1",
-		"typescript": "^4.5.5",
-		"ts-loader": "^9.2.6",
-		"webpack": "^5.69.1",
-		"webpack-cli": "^4.9.2",
-		"@vscode/test-electron": "^2.1.2"
-	}
+  "displayName": "word-counter",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.64.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "clipboard.history.copy",
+        "title": "Copy",
+        "icon": {
+          "dark": "resources/copy.png",
+          "light": "resources/copy.png"
+        }
+      },
+      {
+        "command": "clipboard.history.remove",
+        "title": "Remove",
+        "icon": {
+          "dark": "resources/close.png",
+          "light": "resources/close.png"
+        }
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "clipboard.history.copy",
+        "key": "ctrl+c",
+        "mac": "cmd+c",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "clipboard.cut",
+        "key": "ctrl+x",
+        "mac": "cmd+x",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "clipboard.pasteFromClipboard",
+        "key": "ctrl+shift+v",
+        "mac": "cmd+shift+v",
+        "when": "editorTextFocus"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "clipboard-history",
+          "title": "Clipboard History",
+          "icon": "resources/copy.png"
+        }
+      ]
+    },
+    "views": {
+      "clipboard-history": [
+        {
+          "id": "clipboard.history",
+          "name": "Clipboard History"
+        }
+      ]
+    },
+    "menus": {
+      "view/item/context": [
+        {
+          "command": "clipboard.history.copy",
+          "group": "inline"
+        },
+        {
+          "command": "clipboard.history.remove",
+          "group": "inline"
+        },
+        {
+          "command": "clipboard.history.remove",
+          "group": "1_modification"
+        }
+      ]
+    },
+    "configuration": [
+      {
+        "title": "Clipboard",
+        "properties": {
+          "clipboard.maximumClips": {
+            "type": "integer",
+            "default": 200,
+            "description": "클립보드 저장 갯수"
+          }
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.64.0",
+    "@types/glob": "^7.2.0",
+    "@types/mocha": "^9.1.0",
+    "@types/node": "14.x",
+    "@typescript-eslint/eslint-plugin": "^5.12.1",
+    "@typescript-eslint/parser": "^5.12.1",
+    "eslint": "^8.9.0",
+    "glob": "^7.2.0",
+    "mocha": "^9.2.1",
+    "typescript": "^4.5.5",
+    "ts-loader": "^9.2.6",
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2",
+    "@vscode/test-electron": "^2.1.2"
+  }
 }
