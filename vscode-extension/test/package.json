@@ -1,6 +1,6 @@
 {
-  "name": "test",
-	"displayName": "test",
+  "name": "word-counter",
+	"displayName": "word-counter",
 	"description": "",
 	"version": "0.0.1",
 	"engines": {
@@ -10,7 +10,7 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:test.helloWorld"
+        "onLanguage:markdown"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
