@@ -1,8 +1,8 @@
 toast("Started", "win_for_mac.ahk started")
 
 ^y:: reload
-LWin::Ctrl
-Alt::LWin
+Ctrl::Alt
+Alt::Ctrl
 CapsLock:: setToEng()
 ^CapsLock:: setToKor()
 
