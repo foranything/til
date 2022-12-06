@@ -13,5 +13,7 @@
     "node_modules": true
   },
   "explorerExclude.backup": null,
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "deno.enable": true,
+  "deno.unstable": true
 }
